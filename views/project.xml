@@ -1,0 +1,70 @@
+<odoo>
+    <record id="project_list_action" model="ir.actions.act_window">
+        <field name="name">Projectos</field>
+        <field name="res_model">projectbooster.project</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Crea el primer proyecto</p>
+        </field>
+    </record>
+
+    <menuitem id="main_projectbooster_menu" name="Project Booster" action="project_list_action" />
+    <menuitem id="projectbooster_menu" name="Project Booster" parent="main_projectbooster_menu" />
+    <menuitem id="projects_menu" name="Proyectos" parent="projectbooster_menu" action="project_list_action"/>
+    
+    <record model="ir.ui.view" id="project_tree_view">
+        <field name="name">project.tree</field>
+        <field name="model">projectbooster.project</field>
+        <field name="arch" type="xml">
+            <tree string="Vista de proyectos">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="project_icon" widget="image" options='{"size": [80, 80]}'/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_search_view">
+        <field name="name">project.search</field>
+        <field name="model">projectbooster.project</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_form_view">
+        <field name="name">project.form</field>
+        <field name="model">projectbooster.project</field>
+        <field name="arch" type="xml">
+            <form string="Project Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="duration_days"/>
+                        <field name="category"/>
+                        <field name="user_id"/>
+                        <field name="project_icon"/>
+                    </group>
+                     <notebook>
+                        <page string="Tareas">
+                            <field name="task_ids">
+                                <tree string="Tareas encontradas">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="completed"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Más información">
+                            <field name="extra_information"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

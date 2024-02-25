@@ -1,0 +1,61 @@
+<odoo>
+    <record id="task_list_action" model="ir.actions.act_window">
+        <field name="name">Tareas</field>
+        <field name="res_model">projectbooster.task</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Crea la primera tarea</p>
+        </field>
+    </record>
+
+    <menuitem id="task_menu" name="Tareas" parent="projectbooster_menu" action="task_list_action"/>
+
+    <record model="ir.ui.view" id="task_tree_view">
+        <field name="name">task.tree</field>
+        <field name="model">projectbooster.task</field>
+        <field name="arch" type="xml">
+            <tree string="Vista de tareas">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="date"/>
+                <field name="completed"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="task_search_view">
+        <field name="name">task.search</field>
+        <field name="model">projectbooster.task</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="task_form_view">
+        <field name="name">task.form</field>
+        <field name="model">projectbooster.task</field>
+        <field name="arch" type="xml">
+            <form string="Task Form">
+                <sheet>
+                    <group>
+                        <group string="Información principal">
+                            <field name="project_id"/>
+                            <field name="name"/>
+                        </group>
+                        <group string="Más datos">
+                            <field name="description"/>
+                            <field name="date"/>
+                            <field name="completed"/>
+                        </group>
+                        <label for="collaborators_ids"/>
+                        <field name="collaborators_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
