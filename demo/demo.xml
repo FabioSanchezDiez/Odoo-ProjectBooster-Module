@@ -1,3 +1,91 @@
 <odoo>
-  
+    <data>
+        <!-- DEMO DATA FOR PROJECTS -->
+
+
+        <record id="project_1" model="projectbooster.project">
+            <field name="name">Proyecto de Implementación de CRM</field>
+            <field name="description">Este proyecto implica la implementación de un sistema CRM para mejorar la gestión de clientes.</field>
+            <field name="duration_days">30</field>
+            <field name="category">Implementación</field>
+            <field name="extra_information">Este proyecto es una prioridad para el departamento de ventas.</field>
+            <field name="user_id" ref="base.user_root"/> 
+        </record>
+        
+        <record id="project_2" model="projectbooster.project">
+            <field name="name">Rediseño del Sitio Web</field>
+            <field name="description">Rediseño completo del sitio web corporativo para mejorar la experiencia del usuario.</field>
+            <field name="duration_days">45</field>
+            <field name="category">Desarrollo Web</field>
+            <field name="extra_information">Se espera que el nuevo diseño aumente las conversiones en un 20%.</field>
+            <field name="user_id" ref="base.user_admin"/>
+        </record>
+
+
+        <!-- DEMO DATA FOR TASKS -->
+
+
+        <record id="task_1" model="projectbooster.task">
+            <field name="name">Desarrollar Funcionalidad de Usuario</field>
+            <field name="description">Desarrollar la funcionalidad de usuario para el módulo X del sistema.</field>
+            <field name="date" eval="(datetime.now() + timedelta(days=25)).strftime('%Y-%m-%d')"/>
+            <field name="completed" eval="False"/>
+            <field name="project_id" ref="projectbooster.project_1"/>
+            <field name="collaborators_ids" eval="[(6, 0, [ref('base.partner_admin')])]"/> <!-- Asigna al administrador como colaborador -->
+        </record>
+        
+        <record id="task_2" model="projectbooster.task">
+            <field name="name">Pruebas de Calidad</field>
+            <field name="description">Realizar pruebas de calidad para garantizar que el software cumple con los estándares.</field>
+            <field name="date" eval="(datetime.now() + timedelta(days=40)).strftime('%Y-%m-%d')"/>
+            <field name="completed" eval="False"/>
+            <field name="project_id" ref="projectbooster.project_1"/>
+            <field name="collaborators_ids" eval="[(6, 0, [ref('base.partner_admin')])]"/>
+        </record>
+        
+        <record id="task_3" model="projectbooster.task">
+            <field name="name">Revisión de Diseño</field>
+            <field name="description">Revisar el diseño del nuevo módulo con el equipo de diseño.</field>
+            <field name="date" eval="(datetime.now() + timedelta(days=35)).strftime('%Y-%m-%d')"/>
+            <field name="completed" eval="False"/>
+            <field name="project_id" ref="projectbooster.project_2"/>
+            <field name="collaborators_ids" eval="[(6, 0, [ref('base.partner_admin')])]"/>
+        </record>
+
+        <!-- DEMO DATA FOR EXPENSES -->
+
+        <record id="expense_1" model="projectbooster.expense">
+            <field name="name">Boletos de Avión</field>
+            <field name="description">Compra de boletos de avión para el equipo de desarrollo.</field>
+            <field name="expense_value">1500.00</field>
+            <field name="expense_type">travel</field>
+            <field name="project_ids" eval="[(6, 0, [ref('projectbooster.project_1'), ref('projectbooster.project_2')])]"/>
+        </record>
+        
+        <record id="expense_2" model="projectbooster.expense">
+            <field name="name">Materiales para Desarrollo</field>
+            <field name="description">Compra de materiales necesarios para el desarrollo del proyecto.</field>
+            <field name="expense_value">500.00</field>
+            <field name="expense_type">materials</field>
+            <field name="project_ids" eval="[(6, 0, [ref('projectbooster.project_1')])]"/> <!-- Asigna al proyecto 1 -->
+        </record>
+        
+        <record id="expense_3" model="projectbooster.expense">
+            <field name="name">Servicios de Consultoría</field>
+            <field name="description">Pago por servicios de consultoría externa.</field>
+            <field name="expense_value">1200.00</field>
+            <field name="expense_type">services</field>
+            <field name="project_ids" eval="[(6, 0, [ref('projectbooster.project_2')])]"/> <!-- Asigna al proyecto 2 -->
+        </record>
+        
+        <record id="expense_4" model="projectbooster.expense">
+            <field name="name">Gastos Variados</field>
+            <field name="description">Otros gastos no clasificados en las categorías anteriores.</field>
+            <field name="expense_value">300.00</field>
+            <field name="expense_type">other</field>
+            <field name="project_ids" eval="[(6, 0, [ref('projectbooster.project_2')])]"/> <!-- Asigna al proyecto 2 -->
+        </record>
+        
+    </data>
+    
 </odoo>

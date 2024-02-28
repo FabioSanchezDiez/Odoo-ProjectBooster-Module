@@ -26,7 +26,8 @@
         # 'security/ir.model.access.csv',
         'views/project.xml',
         'views/task.xml',
-        'views/templates.xml',
+        'views/expense.xml',
+        'demo/demo.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

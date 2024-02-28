@@ -1,6 +1,6 @@
 <odoo>
     <record id="project_list_action" model="ir.actions.act_window">
-        <field name="name">Projectos</field>
+        <field name="name">Proyectos</field>
         <field name="res_model">projectbooster.project</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
@@ -41,9 +41,11 @@
         <field name="arch" type="xml">
             <form string="Project Form">
                 <sheet>
-                    <group>
+                    <group string="Información principal">
                         <field name="name"/>
                         <field name="description"/>
+                    </group>
+                    <group string="Información Extra">
                         <field name="duration_days"/>
                         <field name="category"/>
                         <field name="user_id"/>

@@ -1,0 +1,60 @@
+<odoo>
+    <record id="expense_list_action" model="ir.actions.act_window">
+        <field name="name">Gastos</field>
+        <field name="res_model">projectbooster.expense</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Crea el primer gasto</p>
+        </field>
+    </record>
+
+    <menuitem id="expense_menu" name="Gastos" parent="projectbooster_menu" action="expense_list_action"/>
+    
+    <record model="ir.ui.view" id="expense_tree_view">
+        <field name="name">expense.tree</field>
+        <field name="model">projectbooster.expense</field>
+        <field name="arch" type="xml">
+            <tree string="Vista de gastos">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="expense_value"/>
+                <field name="expense_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="expense_search_view">
+        <field name="name">expense.search</field>
+        <field name="model">projectbooster.expense</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="expense_value"/>
+                <field name="expense_type"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="expense_form_view">
+        <field name="name">expense.form</field>
+        <field name="model">projectbooster.expense</field>
+        <field name="arch" type="xml">
+            <form string="Task Form">
+                <sheet>
+                    <group>
+                        <group string="Información principal">
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                        <group string="Sobre el gasto">
+                            <field name="expense_value"/>
+                            <field name="expense_type"/>
+                        </group>
+                        <label for="project_ids" style="margin-top:40px;font-weight: bold;margin-bottom:10px;"/>
+                        <field name="project_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

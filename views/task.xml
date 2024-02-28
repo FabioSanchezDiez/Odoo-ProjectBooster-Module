@@ -18,6 +18,7 @@
                 <field name="name"/>
                 <field name="description"/>
                 <field name="date"/>
+                <field name="days_remaining"/>
                 <field name="completed"/>
             </tree>
         </field>
@@ -42,15 +43,16 @@
                 <sheet>
                     <group>
                         <group string="Información principal">
-                            <field name="project_id"/>
                             <field name="name"/>
+                            <field name="description"/>
                         </group>
                         <group string="Más datos">
-                            <field name="description"/>
                             <field name="date"/>
                             <field name="completed"/>
+                            <field name="days_remaining" readonly="1"/>
+                            <field name="project_id" readonly="1"/>
                         </group>
-                        <label for="collaborators_ids"/>
+                        <label for="collaborators_ids" style="margin-top:40px;font-weight: bold;margin-bottom:10px;"/>
                         <field name="collaborators_ids"/>
                     </group>
                 </sheet>
